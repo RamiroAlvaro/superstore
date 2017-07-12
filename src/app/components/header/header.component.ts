@@ -1,4 +1,6 @@
+import { MenuService } from './../../providers/menu.service';
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  // tslint:disable-next-line:no-inferrable-types
+  modal: boolean = false;
+  constructor(public menu: MenuService) { }
 
   ngOnInit() {
+    document.addEventListener('scroll', (e) => {
+      if (document.body.scrollTop > 65) {
+        $('app-header nav').addClass('fixed');
+      } else {
+        $('app-header nav').removeClass('fixed');
+      }
+      this.menu.fix();
+    }, true);
+  }
+
+  hideSearch() {
+    this.modal = false;
+  }
+
+  showSearch() {
+    this .modal = false;
   }
 
 }
