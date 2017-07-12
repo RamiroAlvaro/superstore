@@ -1,3 +1,4 @@
+import { ProductsService } from './providers/products.service';
 import { MenuService } from './providers/menu.service';
 import { RoutingModule } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,7 +40,7 @@ import { Error404PageComponent } from './pages/error404-page/error404-page.compo
     BrowserModule,
     RoutingModule
   ],
-  providers: [MenuService],
+  providers: [MenuService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
